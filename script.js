@@ -1,26 +1,19 @@
-function stringChop(str, size) {
-	if(str == null) return [];
+function chunkString(str, size) {
+    if (!str) return [];
 
-	size = Number(size);
+    let result = [];
+    
+    str.split('').reduce((acc, char, index) => {
+        let chunkIndex = Math.floor(index / size);
 
-	let result = [];
-	let temp = '';
+        acc[chunkIndex] = (acc[chunkIndex] || '') + char;
 
-	for(let i = 0; i < str.length; i++){
-		temp += str[i]
+        return acc;
+    }, result);
 
-		if(temp.length === size){
-			result.push(temp);
-			temp = '' ; 
-		}
-	}
-
-	if(temp !== ){
-		result.push(temp)
-	}
-
-	return result;
+    return result;
 }
+
 // Do not change the code below
 const str = prompt("Enter String.");
 const size = prompt("Enter Chunk Size.");
